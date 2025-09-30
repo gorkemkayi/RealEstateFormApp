@@ -44,7 +44,6 @@ namespace RealEstate.WinForm
             }
 
             estateDataGridView.DataSource = _estateTable;
-            estateDataGridView.Columns["Emlak Id"].Visible = false;
             //ComboBox Doldurma Kodları
             var customers = await _customerRepository.GetMyCustomers(user.AppUserId);
 

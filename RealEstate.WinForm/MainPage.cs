@@ -52,9 +52,9 @@ namespace RealEstate.WinForm
         private async void MainPage_Load(object sender, EventArgs e)
         {
             var user = await _appUserRepository.GetExistingUser();
-            txtUsername.Text=user.Username;
-            txtName.Text= user.Name;
-            txtSurname.Text = user.Surname;
+            lblUsername.Text=user.Username;
+            lblName.Text= user.Name;
+            lblSurname.Text = user.Surname;
 
 
             #region Estate'ler için Pie Chart

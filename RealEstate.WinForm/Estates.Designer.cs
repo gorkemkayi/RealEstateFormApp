@@ -29,6 +29,11 @@
         private void InitializeComponent()
         {
             estateDataGridView = new Krypton.Toolkit.KryptonDataGridView();
+            Column1 = new DataGridViewTextBoxColumn();
+            Column2 = new DataGridViewTextBoxColumn();
+            Column3 = new DataGridViewTextBoxColumn();
+            Column4 = new DataGridViewTextBoxColumn();
+            Column5 = new DataGridViewTextBoxColumn();
             kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
             kryptonPanel3 = new Krypton.Toolkit.KryptonPanel();
@@ -65,6 +70,7 @@
             estateDataGridView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
             estateDataGridView.BorderStyle = BorderStyle.None;
             estateDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            estateDataGridView.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5 });
             estateDataGridView.Dock = DockStyle.Fill;
             estateDataGridView.Location = new Point(0, 0);
             estateDataGridView.Name = "estateDataGridView";
@@ -72,6 +78,42 @@
             estateDataGridView.RowHeadersWidth = 51;
             estateDataGridView.Size = new Size(443, 637);
             estateDataGridView.TabIndex = 0;
+            // 
+            // Column1
+            // 
+            Column1.DataPropertyName = "Emlak Adı";
+            Column1.HeaderText = "Emlak Adı";
+            Column1.MinimumWidth = 6;
+            Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            Column2.DataPropertyName = "Fiyat";
+            Column2.HeaderText = "Fiyat";
+            Column2.MinimumWidth = 6;
+            Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            Column3.DataPropertyName = "Müşteri Adı";
+            Column3.HeaderText = "Müşteri Adı";
+            Column3.MinimumWidth = 6;
+            Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            Column4.DataPropertyName = "Durum";
+            Column4.HeaderText = "Durum";
+            Column4.MinimumWidth = 6;
+            Column4.Name = "Column4";
+            // 
+            // Column5
+            // 
+            Column5.DataPropertyName = "Emlak Id";
+            Column5.HeaderText = "Emlak Id";
+            Column5.MinimumWidth = 6;
+            Column5.Name = "Column5";
+            Column5.Visible = false;
             // 
             // kryptonPanel1
             // 
@@ -128,12 +170,12 @@
             // 
             // kryptonPanel4
             // 
+            kryptonPanel4.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             kryptonPanel4.Controls.Add(kryptonPanel5);
-            kryptonPanel4.Dock = DockStyle.Fill;
-            kryptonPanel4.Location = new Point(443, 0);
+            kryptonPanel4.Location = new Point(458, 0);
             kryptonPanel4.Name = "kryptonPanel4";
-            kryptonPanel4.PaletteMode = Krypton.Toolkit.PaletteMode.Office2007SilverLightMode;
-            kryptonPanel4.Size = new Size(913, 662);
+            kryptonPanel4.PaletteMode = Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            kryptonPanel4.Size = new Size(626, 313);
             kryptonPanel4.TabIndex = 2;
             // 
             // kryptonPanel5
@@ -146,17 +188,17 @@
             kryptonPanel5.Controls.Add(kryptonLabel4);
             kryptonPanel5.Controls.Add(kryptonLabel3);
             kryptonPanel5.Controls.Add(kryptonLabel2);
-            kryptonPanel5.Dock = DockStyle.Top;
+            kryptonPanel5.Dock = DockStyle.Fill;
             kryptonPanel5.Location = new Point(0, 0);
             kryptonPanel5.Name = "kryptonPanel5";
             kryptonPanel5.PaletteMode = Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            kryptonPanel5.Size = new Size(913, 225);
+            kryptonPanel5.Size = new Size(626, 313);
             kryptonPanel5.TabIndex = 0;
             // 
             // comboBoxCustomers
             // 
             comboBoxCustomers.DropDownWidth = 129;
-            comboBoxCustomers.Location = new Point(498, 88);
+            comboBoxCustomers.Location = new Point(450, 88);
             comboBoxCustomers.Name = "comboBoxCustomers";
             comboBoxCustomers.PaletteMode = Krypton.Toolkit.PaletteMode.ProfessionalSystem;
             comboBoxCustomers.Size = new Size(129, 26);
@@ -166,7 +208,7 @@
             // 
             // btnCreateEstate
             // 
-            btnCreateEstate.Location = new Point(498, 151);
+            btnCreateEstate.Location = new Point(450, 151);
             btnCreateEstate.Name = "btnCreateEstate";
             btnCreateEstate.Size = new Size(129, 31);
             btnCreateEstate.TabIndex = 8;
@@ -190,7 +232,7 @@
             // 
             // kryptonLabel6
             // 
-            kryptonLabel6.Location = new Point(364, 91);
+            kryptonLabel6.Location = new Point(316, 91);
             kryptonLabel6.Name = "kryptonLabel6";
             kryptonLabel6.Size = new Size(113, 24);
             kryptonLabel6.StateNormal.ShortText.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 162);
@@ -223,7 +265,7 @@
             kryptonLabel2.Dock = DockStyle.Top;
             kryptonLabel2.Location = new Point(0, 0);
             kryptonLabel2.Name = "kryptonLabel2";
-            kryptonLabel2.Size = new Size(913, 28);
+            kryptonLabel2.Size = new Size(626, 28);
             kryptonLabel2.StateNormal.ShortText.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 162);
             kryptonLabel2.StateNormal.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Center;
             kryptonLabel2.TabIndex = 0;
@@ -274,5 +316,10 @@
         private Krypton.Toolkit.KryptonButton btnCreateEstate;
         private Krypton.Toolkit.KryptonTextBox txtPrice;
         private Krypton.Toolkit.KryptonComboBox comboBoxCustomers;
+        private DataGridViewTextBoxColumn Column1;
+        private DataGridViewTextBoxColumn Column2;
+        private DataGridViewTextBoxColumn Column3;
+        private DataGridViewTextBoxColumn Column4;
+        private DataGridViewTextBoxColumn Column5;
     }
 }

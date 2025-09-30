@@ -28,20 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             menuStrip1 = new MenuStrip();
             emaklarımToolStripMenuItem = new ToolStripMenuItem();
             müşterilerimToolStripMenuItem = new ToolStripMenuItem();
             kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
-            txtSurname = new Krypton.Toolkit.KryptonTextBox();
-            txtName = new Krypton.Toolkit.KryptonTextBox();
-            txtUsername = new Krypton.Toolkit.KryptonTextBox();
+            lblUsername = new Krypton.Toolkit.KryptonLabel();
             kryptonLabel4 = new Krypton.Toolkit.KryptonLabel();
             kryptonLabel3 = new Krypton.Toolkit.KryptonLabel();
             kryptonLabel2 = new Krypton.Toolkit.KryptonLabel();
@@ -54,6 +52,8 @@
             pieChartCustomers = new System.Windows.Forms.DataVisualization.Charting.Chart();
             kryptonLabel6 = new Krypton.Toolkit.KryptonLabel();
             kryptonPanel5 = new Krypton.Toolkit.KryptonPanel();
+            lblSelledEstates = new Krypton.Toolkit.KryptonLabel();
+            kryptonLabel12 = new Krypton.Toolkit.KryptonLabel();
             kryptonLabel11 = new Krypton.Toolkit.KryptonLabel();
             lblRentedEstateCount = new Krypton.Toolkit.KryptonLabel();
             lblActiveEstateCount = new Krypton.Toolkit.KryptonLabel();
@@ -63,8 +63,8 @@
             kryptonLabel9 = new Krypton.Toolkit.KryptonLabel();
             kryptonLabel8 = new Krypton.Toolkit.KryptonLabel();
             kryptonLabel7 = new Krypton.Toolkit.KryptonLabel();
-            kryptonLabel12 = new Krypton.Toolkit.KryptonLabel();
-            lblSelledEstates = new Krypton.Toolkit.KryptonLabel();
+            lblName = new Krypton.Toolkit.KryptonLabel();
+            lblSurname = new Krypton.Toolkit.KryptonLabel();
             ((System.ComponentModel.ISupportInitialize)kryptonPanel1).BeginInit();
             kryptonPanel1.SuspendLayout();
             menuStrip1.SuspendLayout();
@@ -118,9 +118,9 @@
             // 
             // kryptonPanel2
             // 
-            kryptonPanel2.Controls.Add(txtSurname);
-            kryptonPanel2.Controls.Add(txtName);
-            kryptonPanel2.Controls.Add(txtUsername);
+            kryptonPanel2.Controls.Add(lblSurname);
+            kryptonPanel2.Controls.Add(lblName);
+            kryptonPanel2.Controls.Add(lblUsername);
             kryptonPanel2.Controls.Add(kryptonLabel4);
             kryptonPanel2.Controls.Add(kryptonLabel3);
             kryptonPanel2.Controls.Add(kryptonLabel2);
@@ -131,29 +131,17 @@
             kryptonPanel2.Size = new Size(327, 277);
             kryptonPanel2.TabIndex = 1;
             // 
-            // txtSurname
+            // lblUsername
             // 
-            txtSurname.Location = new Point(139, 137);
-            txtSurname.Name = "txtSurname";
-            txtSurname.ReadOnly = true;
-            txtSurname.Size = new Size(125, 27);
-            txtSurname.TabIndex = 5;
-            // 
-            // txtName
-            // 
-            txtName.Location = new Point(139, 94);
-            txtName.Name = "txtName";
-            txtName.ReadOnly = true;
-            txtName.Size = new Size(125, 27);
-            txtName.TabIndex = 4;
-            // 
-            // txtUsername
-            // 
-            txtUsername.Location = new Point(139, 57);
-            txtUsername.Name = "txtUsername";
-            txtUsername.ReadOnly = true;
-            txtUsername.Size = new Size(125, 27);
-            txtUsername.TabIndex = 3;
+            lblUsername.AutoSize = false;
+            lblUsername.ImeMode = ImeMode.NoControl;
+            lblUsername.Location = new Point(120, 57);
+            lblUsername.Name = "lblUsername";
+            lblUsername.Size = new Size(104, 19);
+            lblUsername.StateNormal.ShortText.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            lblUsername.StateNormal.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Center;
+            lblUsername.TabIndex = 6;
+            lblUsername.Values.Text = "Kullanıcı";
             // 
             // kryptonLabel4
             // 
@@ -224,18 +212,18 @@
             // 
             // pieCharEstates
             // 
-            chartArea1.Name = "ChartArea1";
-            pieCharEstates.ChartAreas.Add(chartArea1);
+            chartArea3.Name = "ChartArea1";
+            pieCharEstates.ChartAreas.Add(chartArea3);
             pieCharEstates.Dock = DockStyle.Fill;
-            legend1.Name = "Legend1";
-            pieCharEstates.Legends.Add(legend1);
+            legend3.Name = "Legend1";
+            pieCharEstates.Legends.Add(legend3);
             pieCharEstates.Location = new Point(0, 30);
             pieCharEstates.Name = "pieCharEstates";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            pieCharEstates.Series.Add(series1);
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            pieCharEstates.Series.Add(series3);
             pieCharEstates.Size = new Size(1284, 247);
             pieCharEstates.TabIndex = 2;
             pieCharEstates.Text = "chart1";
@@ -264,18 +252,18 @@
             // 
             // pieChartCustomers
             // 
-            chartArea2.Name = "ChartArea1";
-            pieChartCustomers.ChartAreas.Add(chartArea2);
+            chartArea4.Name = "ChartArea1";
+            pieChartCustomers.ChartAreas.Add(chartArea4);
             pieChartCustomers.Dock = DockStyle.Fill;
-            legend2.Name = "Legend1";
-            pieChartCustomers.Legends.Add(legend2);
+            legend4.Name = "Legend1";
+            pieChartCustomers.Legends.Add(legend4);
             pieChartCustomers.Location = new Point(0, 30);
             pieChartCustomers.Name = "pieChartCustomers";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            pieChartCustomers.Series.Add(series2);
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series4.Legend = "Legend1";
+            series4.Name = "Series1";
+            pieChartCustomers.Series.Add(series4);
             pieChartCustomers.Size = new Size(1284, 341);
             pieChartCustomers.TabIndex = 1;
             pieChartCustomers.Text = "chart1";
@@ -309,6 +297,29 @@
             kryptonPanel5.Name = "kryptonPanel5";
             kryptonPanel5.Size = new Size(324, 371);
             kryptonPanel5.TabIndex = 5;
+            // 
+            // lblSelledEstates
+            // 
+            lblSelledEstates.Location = new Point(169, 330);
+            lblSelledEstates.Name = "lblSelledEstates";
+            lblSelledEstates.PaletteMode = Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            lblSelledEstates.Size = new Size(22, 26);
+            lblSelledEstates.StateNormal.ShortText.Color1 = Color.Red;
+            lblSelledEstates.StateNormal.ShortText.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            lblSelledEstates.StateNormal.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Center;
+            lblSelledEstates.TabIndex = 10;
+            lblSelledEstates.Values.Text = "0";
+            // 
+            // kryptonLabel12
+            // 
+            kryptonLabel12.Location = new Point(19, 304);
+            kryptonLabel12.Name = "kryptonLabel12";
+            kryptonLabel12.PaletteMode = Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            kryptonLabel12.Size = new Size(144, 52);
+            kryptonLabel12.StateNormal.ShortText.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            kryptonLabel12.StateNormal.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Center;
+            kryptonLabel12.TabIndex = 9;
+            kryptonLabel12.Values.Text = "Satılan\r\nVarlık Sayım :";
             // 
             // kryptonLabel11
             // 
@@ -416,28 +427,29 @@
             kryptonLabel7.TabIndex = 0;
             kryptonLabel7.Values.Text = "Varlık Sayım :";
             // 
-            // kryptonLabel12
+            // lblName
             // 
-            kryptonLabel12.Location = new Point(19, 304);
-            kryptonLabel12.Name = "kryptonLabel12";
-            kryptonLabel12.PaletteMode = Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            kryptonLabel12.Size = new Size(144, 52);
-            kryptonLabel12.StateNormal.ShortText.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            kryptonLabel12.StateNormal.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Center;
-            kryptonLabel12.TabIndex = 9;
-            kryptonLabel12.Values.Text = "Satılan\r\nVarlık Sayım :";
+            lblName.AutoSize = false;
+            lblName.ImeMode = ImeMode.NoControl;
+            lblName.Location = new Point(120, 94);
+            lblName.Name = "lblName";
+            lblName.Size = new Size(104, 19);
+            lblName.StateNormal.ShortText.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            lblName.StateNormal.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Center;
+            lblName.TabIndex = 7;
+            lblName.Values.Text = "Ad";
             // 
-            // lblSelledEstates
+            // lblSurname
             // 
-            lblSelledEstates.Location = new Point(169, 330);
-            lblSelledEstates.Name = "lblSelledEstates";
-            lblSelledEstates.PaletteMode = Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            lblSelledEstates.Size = new Size(22, 26);
-            lblSelledEstates.StateNormal.ShortText.Color1 = Color.Red;
-            lblSelledEstates.StateNormal.ShortText.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            lblSelledEstates.StateNormal.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Center;
-            lblSelledEstates.TabIndex = 10;
-            lblSelledEstates.Values.Text = "0";
+            lblSurname.AutoSize = false;
+            lblSurname.ImeMode = ImeMode.NoControl;
+            lblSurname.Location = new Point(120, 137);
+            lblSurname.Name = "lblSurname";
+            lblSurname.Size = new Size(104, 19);
+            lblSurname.StateNormal.ShortText.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            lblSurname.StateNormal.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Center;
+            lblSurname.TabIndex = 8;
+            lblSurname.Values.Text = "Soyad";
             // 
             // MainPage
             // 
@@ -485,9 +497,6 @@
         private Krypton.Toolkit.KryptonPanel kryptonPanel2;
         private Krypton.Toolkit.KryptonLabel kryptonLabel2;
         private Krypton.Toolkit.KryptonLabel kryptonLabel1;
-        private Krypton.Toolkit.KryptonTextBox txtSurname;
-        private Krypton.Toolkit.KryptonTextBox txtName;
-        private Krypton.Toolkit.KryptonTextBox txtUsername;
         private Krypton.Toolkit.KryptonLabel kryptonLabel4;
         private Krypton.Toolkit.KryptonLabel kryptonLabel3;
         private Microsoft.Data.SqlClient.SqlCommand sqlCommand1;
@@ -509,5 +518,8 @@
         private Krypton.Toolkit.KryptonLabel kryptonLabel11;
         private Krypton.Toolkit.KryptonLabel lblSelledEstates;
         private Krypton.Toolkit.KryptonLabel kryptonLabel12;
+        private Krypton.Toolkit.KryptonLabel lblUsername;
+        private Krypton.Toolkit.KryptonLabel lblSurname;
+        private Krypton.Toolkit.KryptonLabel lblName;
     }
 }
