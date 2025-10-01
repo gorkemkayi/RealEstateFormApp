@@ -11,7 +11,9 @@ namespace RealEstate.Application.Interfaces
     public interface ICustomerRepository
     {
         Task<List<CustomerDto>> GetMyCustomers(Guid userId);
+        Task<CustomerDto> GetCustomerById(Guid customerId);
         Task<Customer> AddCustomer(AddCustomerDto addCustomerDto);
         Task DeleteCustomer(Guid CustomerId);
+        Task <Customer> UpdateCustomer(UpdateCustomerNoteDto updateCustomerNoteDto);
     }
 }

@@ -39,11 +39,32 @@ namespace RealEstate.Infrastructure.Repositories
             await _context.SaveChangesAsync();
         }
 
+        public async Task<CustomerDto> GetCustomerById(Guid customerId)
+        {
+            var customer=await _context.Customers.Where(x=>x.CustomerId==customerId).FirstOrDefaultAsync();
+            var mappedCustomer=_mapper.Map<CustomerDto>(customer);
+            return mappedCustomer;
+        }
+
         public async Task<List<CustomerDto>> GetMyCustomers(Guid userId)
         {
             var customers = await _context.Customers.Where(c => c.AppUserId == userId).ToListAsync();
             var mappedCustomers = _mapper.Map<List<CustomerDto>>(customers);
             return mappedCustomers;
+        }
+
+        public async Task<Customer> UpdateCustomer(UpdateCustomerNoteDto updateCustomerNoteDto)
+        {
+            var customer=await _context.Customers.FirstOrDefaultAsync(x=>x.CustomerId == updateCustomerNoteDto.CustomerId);
+
+            if (customer!=null)
+            {
+                customer.Note = updateCustomerNoteDto.Note;
+                await _context.SaveChangesAsync();
+                return customer;
+
+            }
+            return null;
         }
     }
 }

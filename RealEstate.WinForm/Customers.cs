@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using RealEstate.WinForm.Functions;
 
 namespace RealEstate.WinForm
 {
@@ -34,16 +35,16 @@ namespace RealEstate.WinForm
             _customersTable.Columns.Add("Müşteri Id", typeof(Guid));
             _customersTable.Columns.Add("Müşteri Adı", typeof(string));
             _customersTable.Columns.Add("Müşteri Soyadı", typeof(string));
-            _customersTable.Columns.Add("Müşterinin Cinsiyeti",typeof(string));
-            _customersTable.Columns.Add("Müşteri Numarası",typeof(string));
+            _customersTable.Columns.Add("Müşterinin Cinsiyeti", typeof(string));
+            _customersTable.Columns.Add("Müşteri Numarası", typeof(string));
 
 
 
             foreach (var customer in customers)
             {
                 customerCount++;
-                _customersTable.Rows.Add(customerCount,customer.CustomerID, customer.CustomerName, customer.CustomerSurname,customer.Gender,customer.PhoneNumber);
-            }            
+                _customersTable.Rows.Add(customerCount, customer.CustomerID, customer.CustomerName, customer.CustomerSurname, customer.Gender, customer.PhoneNumber);
+            }
             customersDataGrid.DataSource = _customersTable;
         }
 
@@ -56,13 +57,13 @@ namespace RealEstate.WinForm
                 CustomerName = addCustomerNameTextBox.Text,
                 CustomerSurname = addCustomerSurnameTextBox.Text,
                 AppUserId = appUser.AppUserId,
-                Gender= comboBoxGender.SelectedItem.ToString(),
-                PhoneNumber=txtPhoneNumber.Text
+                Gender = comboBoxGender.SelectedItem.ToString(),
+                PhoneNumber = txtPhoneNumber.Text
 
             };
-            var createdCustomer=await _customerRepository.AddCustomer(customer);
-            
-            _customersTable.Rows.Add(customerCount,createdCustomer.CustomerId,createdCustomer.CustomerName, createdCustomer.CustomerSurname,createdCustomer.Gender,createdCustomer.PhoneNumber);
+            var createdCustomer = await _customerRepository.AddCustomer(customer);
+
+            _customersTable.Rows.Add(customerCount, createdCustomer.CustomerId, createdCustomer.CustomerName, createdCustomer.CustomerSurname, createdCustomer.Gender, createdCustomer.PhoneNumber);
 
             addCustomerNameTextBox.Clear();
             addCustomerSurnameTextBox.Clear();
@@ -71,13 +72,78 @@ namespace RealEstate.WinForm
 
         private async void btnDeleteCustomer_Click(object sender, EventArgs e)
         {
-           DataRowView rowView = customersDataGrid.SelectedRows[0].DataBoundItem as DataRowView;
+            DataRowView rowView = customersDataGrid.SelectedRows[0].DataBoundItem as DataRowView;
 
-            Guid customerId=(Guid)rowView["Müşteri Id"];
+            Guid customerId = (Guid)rowView["Müşteri Id"];
 
             await _customerRepository.DeleteCustomer(customerId);
 
             rowView.Delete();
+        }
+
+        private Guid _selectedCustomerId;
+        private async void customersDataGrid_SelectionChanged(object sender, EventArgs e)
+        {
+            if (customersDataGrid.SelectedRows.Count > 0)
+            {
+                _selectedCustomerId = (Guid)customersDataGrid.SelectedRows[0].Cells[1].Value;
+                var customer = await _customerRepository.GetCustomerById(_selectedCustomerId);
+
+                txtCustomerNote.Text = customer.Note;
+            }
+        }
+
+        private async void btnUpdateNote_Click(object sender, EventArgs e)
+        {
+            if (_selectedCustomerId != Guid.Empty)
+            {
+                await _customerRepository.UpdateCustomer(new UpdateCustomerNoteDto
+                {
+                    CustomerId = _selectedCustomerId,
+                    Note = txtCustomerNote.Text
+                });
+                var updatedCustomer = await _customerRepository.GetCustomerById(_selectedCustomerId);
+                txtCustomerNote.Text = updatedCustomer.Note;
+                MessageBox.Show("Müşteri Notu Güncellendi.");
+            }
+            else
+            {
+                btnUpdateNote.Enabled = false;
+            }
+        }
+
+        private void kryptonTextBox1_TextChanged(object sender, EventArgs e)
+        {
+            if (_customersTable != null)
+            {
+                DataView dv = _customersTable.DefaultView;
+
+                dv.RowFilter = string.Format("[Müşteri Adı] LIKE '%{0}%' OR [Müşteri Soyadı] LIKE '%{0}%'", txtCustomerSearch.Text.Replace("'", "''"));
+
+                customersDataGrid.DataSource = dv;
+            }
+        }
+
+        private void txtCustomerSearch_Enter(object sender, EventArgs e)
+        {
+            txtCustomerSearch.Text = "";
+        }
+
+        private void btnExportToPdf_Click(object sender, EventArgs e)
+        {
+            using (SaveFileDialog sfd=new SaveFileDialog())
+            {
+                sfd.Filter = "PDF dosyası|*.pdf";
+                sfd.FileName = "MüşteriListesi.pdf";
+
+                if (sfd.ShowDialog()==DialogResult.OK)
+                {
+                    MyFunctions myFunctions = new MyFunctions();
+                    myFunctions.CustomersExportToPdf(_customersTable, sfd.FileName);
+
+                    MessageBox.Show("PDF başarıyla oluşturuldu!");
+                }
+            }
         }
     }
 }

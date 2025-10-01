@@ -19,5 +19,6 @@ namespace RealEstate.Domain.Entities
         [StringLength(11,MinimumLength =11,ErrorMessage ="Telefon numarası 11 haneli olmalıdır ")]
         [RegularExpression(@"^\d{11}$",ErrorMessage = "Telefon numarası sadece rakamlardan oluşmalıdır")]
         public string PhoneNumber { get; set; }
+        public string? Note { get; set; }
     }
 }

@@ -21,6 +21,7 @@ namespace RealEstate.Application.Mapping
             #region CustomerDtoMapping
             CreateMap<Customer,CustomerDto>().ReverseMap();
             CreateMap<AddCustomerDto, Customer>();
+            CreateMap<UpdateCustomerNoteDto, Customer>();
             #endregion
 
             #region EstateDtoMapping
