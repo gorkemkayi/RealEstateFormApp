@@ -45,6 +45,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="EstateImages\" />
     <Folder Include="ProjectImages\" />
   </ItemGroup>
 

@@ -15,7 +15,9 @@ namespace RealEstate.Domain.Entities
         public Guid AppUserId { get; set; }
         public AppUser AppUser { get; set; }
         public List<Estate> Estates { get; set; } = new List<Estate>();
-
         public string Gender { get; set; }
+        [StringLength(11,MinimumLength =11,ErrorMessage ="Telefon numarası 11 haneli olmalıdır ")]
+        [RegularExpression(@"^\d{11}$",ErrorMessage = "Telefon numarası sadece rakamlardan oluşmalıdır")]
+        public string PhoneNumber { get; set; }
     }
 }

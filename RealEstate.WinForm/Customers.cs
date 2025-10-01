@@ -35,13 +35,14 @@ namespace RealEstate.WinForm
             _customersTable.Columns.Add("Müşteri Adı", typeof(string));
             _customersTable.Columns.Add("Müşteri Soyadı", typeof(string));
             _customersTable.Columns.Add("Müşterinin Cinsiyeti",typeof(string));
+            _customersTable.Columns.Add("Müşteri Numarası",typeof(string));
 
 
 
             foreach (var customer in customers)
             {
                 customerCount++;
-                _customersTable.Rows.Add(customerCount,customer.CustomerID, customer.CustomerName, customer.CustomerSurname,customer.Gender);
+                _customersTable.Rows.Add(customerCount,customer.CustomerID, customer.CustomerName, customer.CustomerSurname,customer.Gender,customer.PhoneNumber);
             }            
             customersDataGrid.DataSource = _customersTable;
         }
@@ -55,12 +56,13 @@ namespace RealEstate.WinForm
                 CustomerName = addCustomerNameTextBox.Text,
                 CustomerSurname = addCustomerSurnameTextBox.Text,
                 AppUserId = appUser.AppUserId,
-                Gender= comboBoxGender.SelectedItem.ToString()
+                Gender= comboBoxGender.SelectedItem.ToString(),
+                PhoneNumber=txtPhoneNumber.Text
 
             };
             var createdCustomer=await _customerRepository.AddCustomer(customer);
             
-            _customersTable.Rows.Add(customerCount,createdCustomer.CustomerId,createdCustomer.CustomerName, createdCustomer.CustomerSurname);
+            _customersTable.Rows.Add(customerCount,createdCustomer.CustomerId,createdCustomer.CustomerName, createdCustomer.CustomerSurname,createdCustomer.Gender,createdCustomer.PhoneNumber);
 
             addCustomerNameTextBox.Clear();
             addCustomerSurnameTextBox.Clear();

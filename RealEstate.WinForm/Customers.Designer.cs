@@ -29,14 +29,12 @@
         private void InitializeComponent()
         {
             customersDataGrid = new Krypton.Toolkit.KryptonDataGridView();
-            Column1 = new DataGridViewTextBoxColumn();
-            Column5 = new DataGridViewTextBoxColumn();
-            Column2 = new DataGridViewTextBoxColumn();
-            Column3 = new DataGridViewTextBoxColumn();
-            Column4 = new DataGridViewTextBoxColumn();
             kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             btnDeleteCustomer = new Krypton.Toolkit.KryptonButton();
             kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
+            kryptonLabel5 = new Krypton.Toolkit.KryptonLabel();
+            txtPhoneNumber = new Krypton.Toolkit.KryptonTextBox();
+            kryptonLabel4 = new Krypton.Toolkit.KryptonLabel();
             comboBoxGender = new Krypton.Toolkit.KryptonComboBox();
             kryptonButton1 = new Krypton.Toolkit.KryptonButton();
             addCustomerSurnameTextBox = new Krypton.Toolkit.KryptonTextBox();
@@ -45,6 +43,12 @@
             kryptonLabel2 = new Krypton.Toolkit.KryptonLabel();
             kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
             kryptonContextMenu1 = new Krypton.Toolkit.KryptonContextMenu();
+            Column1 = new DataGridViewTextBoxColumn();
+            Column5 = new DataGridViewTextBoxColumn();
+            Column2 = new DataGridViewTextBoxColumn();
+            Column3 = new DataGridViewTextBoxColumn();
+            Column4 = new DataGridViewTextBoxColumn();
+            Column6 = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)customersDataGrid).BeginInit();
             ((System.ComponentModel.ISupportInitialize)kryptonPanel1).BeginInit();
             kryptonPanel1.SuspendLayout();
@@ -60,21 +64,161 @@
             customersDataGrid.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
             customersDataGrid.BorderStyle = BorderStyle.None;
             customersDataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            customersDataGrid.Columns.AddRange(new DataGridViewColumn[] { Column1, Column5, Column2, Column3, Column4 });
+            customersDataGrid.Columns.AddRange(new DataGridViewColumn[] { Column1, Column5, Column2, Column3, Column4, Column6 });
             customersDataGrid.Dock = DockStyle.Fill;
             customersDataGrid.Location = new Point(0, 0);
             customersDataGrid.Name = "customersDataGrid";
             customersDataGrid.PaletteMode = Krypton.Toolkit.PaletteMode.ProfessionalOffice2003;
             customersDataGrid.RowHeadersWidth = 51;
-            customersDataGrid.Size = new Size(629, 621);
+            customersDataGrid.Size = new Size(664, 621);
             customersDataGrid.TabIndex = 0;
+            // 
+            // kryptonPanel1
+            // 
+            kryptonPanel1.Controls.Add(btnDeleteCustomer);
+            kryptonPanel1.Controls.Add(customersDataGrid);
+            kryptonPanel1.Dock = DockStyle.Left;
+            kryptonPanel1.Location = new Point(0, 0);
+            kryptonPanel1.Name = "kryptonPanel1";
+            kryptonPanel1.PaletteMode = Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            kryptonPanel1.Size = new Size(664, 621);
+            kryptonPanel1.TabIndex = 1;
+            // 
+            // btnDeleteCustomer
+            // 
+            btnDeleteCustomer.Dock = DockStyle.Bottom;
+            btnDeleteCustomer.Location = new Point(0, 590);
+            btnDeleteCustomer.Name = "btnDeleteCustomer";
+            btnDeleteCustomer.Size = new Size(664, 31);
+            btnDeleteCustomer.TabIndex = 1;
+            btnDeleteCustomer.Values.DropDownArrowColor = Color.Empty;
+            btnDeleteCustomer.Values.Text = "Müşteriyi Sil";
+            btnDeleteCustomer.Click += btnDeleteCustomer_Click;
+            // 
+            // kryptonPanel2
+            // 
+            kryptonPanel2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            kryptonPanel2.Controls.Add(kryptonLabel5);
+            kryptonPanel2.Controls.Add(txtPhoneNumber);
+            kryptonPanel2.Controls.Add(kryptonLabel4);
+            kryptonPanel2.Controls.Add(comboBoxGender);
+            kryptonPanel2.Controls.Add(kryptonButton1);
+            kryptonPanel2.Controls.Add(addCustomerSurnameTextBox);
+            kryptonPanel2.Controls.Add(addCustomerNameTextBox);
+            kryptonPanel2.Controls.Add(kryptonLabel3);
+            kryptonPanel2.Controls.Add(kryptonLabel2);
+            kryptonPanel2.Controls.Add(kryptonLabel1);
+            kryptonPanel2.Location = new Point(701, 0);
+            kryptonPanel2.Name = "kryptonPanel2";
+            kryptonPanel2.PaletteMode = Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            kryptonPanel2.Size = new Size(858, 153);
+            kryptonPanel2.TabIndex = 2;
+            // 
+            // kryptonLabel5
+            // 
+            kryptonLabel5.Anchor = AnchorStyles.None;
+            kryptonLabel5.Location = new Point(326, 104);
+            kryptonLabel5.Name = "kryptonLabel5";
+            kryptonLabel5.Size = new Size(132, 24);
+            kryptonLabel5.TabIndex = 8;
+            kryptonLabel5.Values.Text = "Müşteri Cinsiyeti :";
+            // 
+            // txtPhoneNumber
+            // 
+            txtPhoneNumber.Anchor = AnchorStyles.None;
+            txtPhoneNumber.Location = new Point(464, 49);
+            txtPhoneNumber.Name = "txtPhoneNumber";
+            txtPhoneNumber.Size = new Size(144, 27);
+            txtPhoneNumber.TabIndex = 4;
+            // 
+            // kryptonLabel4
+            // 
+            kryptonLabel4.Anchor = AnchorStyles.None;
+            kryptonLabel4.Location = new Point(318, 51);
+            kryptonLabel4.Name = "kryptonLabel4";
+            kryptonLabel4.Size = new Size(140, 24);
+            kryptonLabel4.TabIndex = 7;
+            kryptonLabel4.Values.Text = "Müşteri Numarası :";
+            // 
+            // comboBoxGender
+            // 
+            comboBoxGender.Anchor = AnchorStyles.None;
+            comboBoxGender.DropDownWidth = 112;
+            comboBoxGender.Items.AddRange(new object[] { "Erkek", "Kadın" });
+            comboBoxGender.Location = new Point(464, 102);
+            comboBoxGender.Name = "comboBoxGender";
+            comboBoxGender.Size = new Size(144, 26);
+            comboBoxGender.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
+            comboBoxGender.TabIndex = 6;
+            comboBoxGender.Text = "Gender";
+            // 
+            // kryptonButton1
+            // 
+            kryptonButton1.Anchor = AnchorStyles.None;
+            kryptonButton1.Location = new Point(674, 100);
+            kryptonButton1.Name = "kryptonButton1";
+            kryptonButton1.Size = new Size(112, 31);
+            kryptonButton1.TabIndex = 5;
+            kryptonButton1.Values.DropDownArrowColor = Color.Empty;
+            kryptonButton1.Values.Text = "Ekle";
+            kryptonButton1.Click += kryptonButton1_Click;
+            // 
+            // addCustomerSurnameTextBox
+            // 
+            addCustomerSurnameTextBox.Anchor = AnchorStyles.None;
+            addCustomerSurnameTextBox.Location = new Point(134, 104);
+            addCustomerSurnameTextBox.Name = "addCustomerSurnameTextBox";
+            addCustomerSurnameTextBox.Size = new Size(125, 27);
+            addCustomerSurnameTextBox.TabIndex = 4;
+            // 
+            // addCustomerNameTextBox
+            // 
+            addCustomerNameTextBox.Anchor = AnchorStyles.None;
+            addCustomerNameTextBox.Location = new Point(134, 48);
+            addCustomerNameTextBox.Name = "addCustomerNameTextBox";
+            addCustomerNameTextBox.Size = new Size(125, 27);
+            addCustomerNameTextBox.TabIndex = 3;
+            // 
+            // kryptonLabel3
+            // 
+            kryptonLabel3.Anchor = AnchorStyles.None;
+            kryptonLabel3.Location = new Point(14, 107);
+            kryptonLabel3.Name = "kryptonLabel3";
+            kryptonLabel3.Size = new Size(120, 24);
+            kryptonLabel3.TabIndex = 2;
+            kryptonLabel3.Values.Text = "Müşteri Soyadı :";
+            // 
+            // kryptonLabel2
+            // 
+            kryptonLabel2.Anchor = AnchorStyles.None;
+            kryptonLabel2.Location = new Point(36, 49);
+            kryptonLabel2.Name = "kryptonLabel2";
+            kryptonLabel2.Size = new Size(98, 24);
+            kryptonLabel2.TabIndex = 1;
+            kryptonLabel2.Values.Text = "Müşteri Adı :";
+            // 
+            // kryptonLabel1
+            // 
+            kryptonLabel1.Dock = DockStyle.Top;
+            kryptonLabel1.LabelStyle = Krypton.Toolkit.LabelStyle.BoldPanel;
+            kryptonLabel1.Location = new Point(0, 0);
+            kryptonLabel1.Name = "kryptonLabel1";
+            kryptonLabel1.PaletteMode = Krypton.Toolkit.PaletteMode.ProfessionalOffice2003;
+            kryptonLabel1.Size = new Size(858, 26);
+            kryptonLabel1.StateCommon.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Center;
+            kryptonLabel1.StateCommon.ShortText.TextV = Krypton.Toolkit.PaletteRelativeAlign.Center;
+            kryptonLabel1.TabIndex = 0;
+            kryptonLabel1.Values.Text = "YENİ MÜŞTERİ EKLE";
             // 
             // Column1
             // 
+            Column1.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             Column1.DataPropertyName = "#";
+            Column1.FillWeight = 15F;
             Column1.HeaderText = "#";
             Column1.MinimumWidth = 6;
             Column1.Name = "Column1";
+            Column1.Resizable = DataGridViewTriState.True;
             // 
             // Column5
             // 
@@ -87,6 +231,7 @@
             // Column2
             // 
             Column2.DataPropertyName = "Müşteri Adı";
+            Column2.FillWeight = 41.44385F;
             Column2.HeaderText = "Müşteri Adı";
             Column2.MinimumWidth = 6;
             Column2.Name = "Column2";
@@ -94,6 +239,7 @@
             // Column3
             // 
             Column3.DataPropertyName = "Müşteri Soyadı";
+            Column3.FillWeight = 41.44385F;
             Column3.HeaderText = "Müşteri Soyadı";
             Column3.MinimumWidth = 6;
             Column3.Name = "Column3";
@@ -101,117 +247,18 @@
             // Column4
             // 
             Column4.DataPropertyName = "Müşterinin Cinsiyeti";
+            Column4.FillWeight = 41.44385F;
             Column4.HeaderText = "Müşterinin Cinsiyeti";
             Column4.MinimumWidth = 6;
             Column4.Name = "Column4";
             // 
-            // kryptonPanel1
+            // Column6
             // 
-            kryptonPanel1.Controls.Add(btnDeleteCustomer);
-            kryptonPanel1.Controls.Add(customersDataGrid);
-            kryptonPanel1.Dock = DockStyle.Left;
-            kryptonPanel1.Location = new Point(0, 0);
-            kryptonPanel1.Name = "kryptonPanel1";
-            kryptonPanel1.PaletteMode = Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            kryptonPanel1.Size = new Size(629, 621);
-            kryptonPanel1.TabIndex = 1;
-            // 
-            // btnDeleteCustomer
-            // 
-            btnDeleteCustomer.Dock = DockStyle.Bottom;
-            btnDeleteCustomer.Location = new Point(0, 590);
-            btnDeleteCustomer.Name = "btnDeleteCustomer";
-            btnDeleteCustomer.Size = new Size(629, 31);
-            btnDeleteCustomer.TabIndex = 1;
-            btnDeleteCustomer.Values.DropDownArrowColor = Color.Empty;
-            btnDeleteCustomer.Values.Text = "Müşteriyi Sil";
-            btnDeleteCustomer.Click += btnDeleteCustomer_Click;
-            // 
-            // kryptonPanel2
-            // 
-            kryptonPanel2.Controls.Add(comboBoxGender);
-            kryptonPanel2.Controls.Add(kryptonButton1);
-            kryptonPanel2.Controls.Add(addCustomerSurnameTextBox);
-            kryptonPanel2.Controls.Add(addCustomerNameTextBox);
-            kryptonPanel2.Controls.Add(kryptonLabel3);
-            kryptonPanel2.Controls.Add(kryptonLabel2);
-            kryptonPanel2.Controls.Add(kryptonLabel1);
-            kryptonPanel2.Dock = DockStyle.Top;
-            kryptonPanel2.Location = new Point(629, 0);
-            kryptonPanel2.Name = "kryptonPanel2";
-            kryptonPanel2.PaletteMode = Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            kryptonPanel2.Size = new Size(942, 153);
-            kryptonPanel2.TabIndex = 2;
-            // 
-            // comboBoxGender
-            // 
-            comboBoxGender.Anchor = AnchorStyles.None;
-            comboBoxGender.DropDownWidth = 112;
-            comboBoxGender.Items.AddRange(new object[] { "Erkek", "Kadın" });
-            comboBoxGender.Location = new Point(360, 49);
-            comboBoxGender.Name = "comboBoxGender";
-            comboBoxGender.Size = new Size(112, 26);
-            comboBoxGender.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
-            comboBoxGender.TabIndex = 6;
-            comboBoxGender.Text = "Gender";
-            // 
-            // kryptonButton1
-            // 
-            kryptonButton1.Anchor = AnchorStyles.None;
-            kryptonButton1.Location = new Point(360, 116);
-            kryptonButton1.Name = "kryptonButton1";
-            kryptonButton1.Size = new Size(112, 31);
-            kryptonButton1.TabIndex = 5;
-            kryptonButton1.Values.DropDownArrowColor = Color.Empty;
-            kryptonButton1.Values.Text = "Ekle";
-            kryptonButton1.Click += kryptonButton1_Click;
-            // 
-            // addCustomerSurnameTextBox
-            // 
-            addCustomerSurnameTextBox.Anchor = AnchorStyles.None;
-            addCustomerSurnameTextBox.Location = new Point(174, 116);
-            addCustomerSurnameTextBox.Name = "addCustomerSurnameTextBox";
-            addCustomerSurnameTextBox.Size = new Size(125, 27);
-            addCustomerSurnameTextBox.TabIndex = 4;
-            // 
-            // addCustomerNameTextBox
-            // 
-            addCustomerNameTextBox.Anchor = AnchorStyles.None;
-            addCustomerNameTextBox.Location = new Point(174, 48);
-            addCustomerNameTextBox.Name = "addCustomerNameTextBox";
-            addCustomerNameTextBox.Size = new Size(125, 27);
-            addCustomerNameTextBox.TabIndex = 3;
-            // 
-            // kryptonLabel3
-            // 
-            kryptonLabel3.Anchor = AnchorStyles.None;
-            kryptonLabel3.Location = new Point(55, 116);
-            kryptonLabel3.Name = "kryptonLabel3";
-            kryptonLabel3.Size = new Size(113, 24);
-            kryptonLabel3.TabIndex = 2;
-            kryptonLabel3.Values.Text = "Müşteri Soyadı";
-            // 
-            // kryptonLabel2
-            // 
-            kryptonLabel2.Anchor = AnchorStyles.None;
-            kryptonLabel2.Location = new Point(78, 49);
-            kryptonLabel2.Name = "kryptonLabel2";
-            kryptonLabel2.Size = new Size(90, 24);
-            kryptonLabel2.TabIndex = 1;
-            kryptonLabel2.Values.Text = "Müşteri Adı";
-            // 
-            // kryptonLabel1
-            // 
-            kryptonLabel1.Dock = DockStyle.Top;
-            kryptonLabel1.LabelStyle = Krypton.Toolkit.LabelStyle.BoldPanel;
-            kryptonLabel1.Location = new Point(0, 0);
-            kryptonLabel1.Name = "kryptonLabel1";
-            kryptonLabel1.PaletteMode = Krypton.Toolkit.PaletteMode.ProfessionalOffice2003;
-            kryptonLabel1.Size = new Size(942, 26);
-            kryptonLabel1.StateCommon.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Center;
-            kryptonLabel1.StateCommon.ShortText.TextV = Krypton.Toolkit.PaletteRelativeAlign.Center;
-            kryptonLabel1.TabIndex = 0;
-            kryptonLabel1.Values.Text = "YENİ MÜŞTERİ EKLE";
+            Column6.DataPropertyName = "Müşteri Numarası";
+            Column6.FillWeight = 41.44385F;
+            Column6.HeaderText = "Müşteri Numarası";
+            Column6.MinimumWidth = 6;
+            Column6.Name = "Column6";
             // 
             // Customers
             // 
@@ -247,10 +294,14 @@
         private Krypton.Toolkit.KryptonContextMenu kryptonContextMenu1;
         private Krypton.Toolkit.KryptonButton btnDeleteCustomer;
         private Krypton.Toolkit.KryptonComboBox comboBoxGender;
+        private Krypton.Toolkit.KryptonTextBox txtPhoneNumber;
+        private Krypton.Toolkit.KryptonLabel kryptonLabel4;
+        private Krypton.Toolkit.KryptonLabel kryptonLabel5;
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn Column5;
         private DataGridViewTextBoxColumn Column2;
         private DataGridViewTextBoxColumn Column3;
         private DataGridViewTextBoxColumn Column4;
+        private DataGridViewTextBoxColumn Column6;
     }
 }

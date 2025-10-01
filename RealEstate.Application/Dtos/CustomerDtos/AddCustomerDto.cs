@@ -13,5 +13,6 @@ namespace RealEstate.Application.Dtos.CustomerDtos
         public string CustomerSurname { get; set; }
         public Guid AppUserId { get; set; }
         public string Gender { get; set; }
+        public string PhoneNumber { get; set; }
     }
 }

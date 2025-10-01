@@ -24,8 +24,9 @@ namespace RealEstate.Application.Mapping
             #endregion
 
             #region EstateDtoMapping
-            CreateMap<Estate, EstateDto>().ForMember(x => x.CustomerName, opt => opt.MapFrom(src => src.Customer.CustomerName));
+            CreateMap<Estate, EstateDto>().ForMember(x => x.CustomerName, opt => opt.MapFrom(src => src.Customer.CustomerName)).ForMember(x=>x.EstateImages,opt=>opt.MapFrom(src=>src.EstateImages));
             CreateMap<CreateEstateDto, Estate>();
+            CreateMap<EstateImage, EstateImageDto>();
             #endregion
         }
     }

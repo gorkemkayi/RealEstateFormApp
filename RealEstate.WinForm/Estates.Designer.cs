@@ -41,6 +41,7 @@
             kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
             kryptonPanel4 = new Krypton.Toolkit.KryptonPanel();
             kryptonPanel5 = new Krypton.Toolkit.KryptonPanel();
+            btnSelectImage = new Krypton.Toolkit.KryptonButton();
             comboBoxCustomers = new Krypton.Toolkit.KryptonComboBox();
             btnCreateEstate = new Krypton.Toolkit.KryptonButton();
             txtPrice = new Krypton.Toolkit.KryptonTextBox();
@@ -49,6 +50,10 @@
             kryptonLabel4 = new Krypton.Toolkit.KryptonLabel();
             kryptonLabel3 = new Krypton.Toolkit.KryptonLabel();
             kryptonLabel2 = new Krypton.Toolkit.KryptonLabel();
+            estatePictureBox = new Krypton.Toolkit.KryptonPictureBox();
+            kryptonPanel6 = new Krypton.Toolkit.KryptonPanel();
+            kryptonPanel7 = new Krypton.Toolkit.KryptonPanel();
+            kryptonLabel5 = new Krypton.Toolkit.KryptonLabel();
             ((System.ComponentModel.ISupportInitialize)estateDataGridView).BeginInit();
             ((System.ComponentModel.ISupportInitialize)kryptonPanel1).BeginInit();
             kryptonPanel1.SuspendLayout();
@@ -61,6 +66,11 @@
             ((System.ComponentModel.ISupportInitialize)kryptonPanel5).BeginInit();
             kryptonPanel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)comboBoxCustomers).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)estatePictureBox).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)kryptonPanel6).BeginInit();
+            kryptonPanel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)kryptonPanel7).BeginInit();
+            kryptonPanel7.SuspendLayout();
             SuspendLayout();
             // 
             // estateDataGridView
@@ -74,10 +84,11 @@
             estateDataGridView.Dock = DockStyle.Fill;
             estateDataGridView.Location = new Point(0, 0);
             estateDataGridView.Name = "estateDataGridView";
-            estateDataGridView.PaletteMode = Krypton.Toolkit.PaletteMode.Office2007SilverLightMode;
+            estateDataGridView.PaletteMode = Krypton.Toolkit.PaletteMode.ProfessionalSystem;
             estateDataGridView.RowHeadersWidth = 51;
-            estateDataGridView.Size = new Size(443, 637);
+            estateDataGridView.Size = new Size(443, 708);
             estateDataGridView.TabIndex = 0;
+            estateDataGridView.SelectionChanged += estateDataGridView_SelectionChanged;
             // 
             // Column1
             // 
@@ -123,7 +134,7 @@
             kryptonPanel1.Location = new Point(0, 0);
             kryptonPanel1.Name = "kryptonPanel1";
             kryptonPanel1.PaletteMode = Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            kryptonPanel1.Size = new Size(443, 662);
+            kryptonPanel1.Size = new Size(443, 733);
             kryptonPanel1.TabIndex = 1;
             // 
             // kryptonPanel2
@@ -134,14 +145,14 @@
             kryptonPanel2.Location = new Point(0, 25);
             kryptonPanel2.Name = "kryptonPanel2";
             kryptonPanel2.PaletteMode = Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            kryptonPanel2.Size = new Size(443, 637);
+            kryptonPanel2.Size = new Size(443, 708);
             kryptonPanel2.TabIndex = 1;
             // 
             // kryptonPanel3
             // 
             kryptonPanel3.Controls.Add(btnDeleteEstate);
             kryptonPanel3.Dock = DockStyle.Bottom;
-            kryptonPanel3.Location = new Point(0, 602);
+            kryptonPanel3.Location = new Point(0, 673);
             kryptonPanel3.Name = "kryptonPanel3";
             kryptonPanel3.Size = new Size(443, 35);
             kryptonPanel3.TabIndex = 2;
@@ -170,16 +181,16 @@
             // 
             // kryptonPanel4
             // 
-            kryptonPanel4.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             kryptonPanel4.Controls.Add(kryptonPanel5);
-            kryptonPanel4.Location = new Point(458, 0);
+            kryptonPanel4.Location = new Point(460, 0);
             kryptonPanel4.Name = "kryptonPanel4";
             kryptonPanel4.PaletteMode = Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            kryptonPanel4.Size = new Size(626, 313);
+            kryptonPanel4.Size = new Size(627, 313);
             kryptonPanel4.TabIndex = 2;
             // 
             // kryptonPanel5
             // 
+            kryptonPanel5.Controls.Add(btnSelectImage);
             kryptonPanel5.Controls.Add(comboBoxCustomers);
             kryptonPanel5.Controls.Add(btnCreateEstate);
             kryptonPanel5.Controls.Add(txtPrice);
@@ -192,8 +203,18 @@
             kryptonPanel5.Location = new Point(0, 0);
             kryptonPanel5.Name = "kryptonPanel5";
             kryptonPanel5.PaletteMode = Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            kryptonPanel5.Size = new Size(626, 313);
+            kryptonPanel5.Size = new Size(627, 313);
             kryptonPanel5.TabIndex = 0;
+            // 
+            // btnSelectImage
+            // 
+            btnSelectImage.Location = new Point(450, 141);
+            btnSelectImage.Name = "btnSelectImage";
+            btnSelectImage.Size = new Size(129, 31);
+            btnSelectImage.TabIndex = 10;
+            btnSelectImage.Values.DropDownArrowColor = Color.Empty;
+            btnSelectImage.Values.Text = "Resim Ekle";
+            btnSelectImage.Click += btnSelectImage_Click;
             // 
             // comboBoxCustomers
             // 
@@ -208,7 +229,7 @@
             // 
             // btnCreateEstate
             // 
-            btnCreateEstate.Location = new Point(450, 151);
+            btnCreateEstate.Location = new Point(450, 220);
             btnCreateEstate.Name = "btnCreateEstate";
             btnCreateEstate.Size = new Size(129, 31);
             btnCreateEstate.TabIndex = 8;
@@ -265,17 +286,58 @@
             kryptonLabel2.Dock = DockStyle.Top;
             kryptonLabel2.Location = new Point(0, 0);
             kryptonLabel2.Name = "kryptonLabel2";
-            kryptonLabel2.Size = new Size(626, 28);
+            kryptonLabel2.Size = new Size(627, 28);
             kryptonLabel2.StateNormal.ShortText.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 162);
             kryptonLabel2.StateNormal.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Center;
             kryptonLabel2.TabIndex = 0;
             kryptonLabel2.Values.Text = "Yeni Varlık Ekle";
             // 
+            // estatePictureBox
+            // 
+            estatePictureBox.Dock = DockStyle.Fill;
+            estatePictureBox.Location = new Point(0, 0);
+            estatePictureBox.Name = "estatePictureBox";
+            estatePictureBox.Size = new Size(626, 287);
+            estatePictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+            estatePictureBox.TabIndex = 3;
+            estatePictureBox.TabStop = false;
+            // 
+            // kryptonPanel6
+            // 
+            kryptonPanel6.Controls.Add(kryptonPanel7);
+            kryptonPanel6.Controls.Add(kryptonLabel5);
+            kryptonPanel6.Location = new Point(460, 335);
+            kryptonPanel6.Name = "kryptonPanel6";
+            kryptonPanel6.PaletteMode = Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            kryptonPanel6.Size = new Size(626, 315);
+            kryptonPanel6.TabIndex = 4;
+            // 
+            // kryptonPanel7
+            // 
+            kryptonPanel7.Controls.Add(estatePictureBox);
+            kryptonPanel7.Dock = DockStyle.Fill;
+            kryptonPanel7.Location = new Point(0, 28);
+            kryptonPanel7.Name = "kryptonPanel7";
+            kryptonPanel7.Size = new Size(626, 287);
+            kryptonPanel7.TabIndex = 5;
+            // 
+            // kryptonLabel5
+            // 
+            kryptonLabel5.Dock = DockStyle.Top;
+            kryptonLabel5.Location = new Point(0, 0);
+            kryptonLabel5.Name = "kryptonLabel5";
+            kryptonLabel5.Size = new Size(626, 28);
+            kryptonLabel5.StateNormal.ShortText.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            kryptonLabel5.StateNormal.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Center;
+            kryptonLabel5.TabIndex = 4;
+            kryptonLabel5.Values.Text = "Varlığımın Görseli";
+            // 
             // Estates
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1356, 662);
+            ClientSize = new Size(1357, 733);
+            Controls.Add(kryptonPanel6);
             Controls.Add(kryptonPanel4);
             Controls.Add(kryptonPanel1);
             Name = "Estates";
@@ -295,6 +357,12 @@
             kryptonPanel5.ResumeLayout(false);
             kryptonPanel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)comboBoxCustomers).EndInit();
+            ((System.ComponentModel.ISupportInitialize)estatePictureBox).EndInit();
+            ((System.ComponentModel.ISupportInitialize)kryptonPanel6).EndInit();
+            kryptonPanel6.ResumeLayout(false);
+            kryptonPanel6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)kryptonPanel7).EndInit();
+            kryptonPanel7.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -321,5 +389,10 @@
         private DataGridViewTextBoxColumn Column3;
         private DataGridViewTextBoxColumn Column4;
         private DataGridViewTextBoxColumn Column5;
+        private Krypton.Toolkit.KryptonButton btnSelectImage;
+        private Krypton.Toolkit.KryptonPictureBox estatePictureBox;
+        private Krypton.Toolkit.KryptonPanel kryptonPanel6;
+        private Krypton.Toolkit.KryptonLabel kryptonLabel5;
+        private Krypton.Toolkit.KryptonPanel kryptonPanel7;
     }
 }

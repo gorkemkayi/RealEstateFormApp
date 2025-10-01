@@ -15,5 +15,7 @@ namespace RealEstate.Application.Dtos.EstateDtos
         public Guid AppUserId { get; set; }
         public Guid CustomerId { get; set; }
         public string Status { get; set; } = "İlanda";
+
+        public List<string> ImageUrls { get; set; } = new List<string>();
     }
 }

@@ -15,6 +15,7 @@ namespace RealEstate.Application.Dtos.EstateDtos
         public Guid AppUserId { get; set; }
         public string CustomerName { get; set; }
         public string Status { get; set; }
+        public List<EstateImageDto> EstateImages { get; set; }
 
     }
 }
