@@ -31,7 +31,7 @@ namespace RealEstate.WinForm
         {
             var user = await _appUserRepository.GetExistingUser();
             _estates = await _estateRepository.GetMyEstates(user.AppUserId);
-                    
+
 
             _estateTable = new DataTable();
             _estateTable.Columns.Add("Emlak Adı", typeof(string));
@@ -120,12 +120,12 @@ namespace RealEstate.WinForm
 
         private void estateDataGridView_SelectionChanged(object sender, EventArgs e)
         {
-            if (estateDataGridView.SelectedRows.Count>0)
+            if (estateDataGridView.SelectedRows.Count > 0)
             {
                 Guid estateId = (Guid)estateDataGridView.SelectedRows[0].Cells[4].Value;
                 var estate = _estates.FirstOrDefault(x => x.EstateId == estateId);
 
-                if (estate!=null && estate.EstateImages.Any())
+                if (estate != null && estate.EstateImages.Any())
                 {
                     string imagePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, estate.EstateImages.First().ImageUrl);
                     if (File.Exists(imagePath))
@@ -142,6 +142,23 @@ namespace RealEstate.WinForm
                     estatePictureBox.Image = null;
                 }
             }
+        }
+
+        private void txtSearchEstate_TextChanged(object sender, EventArgs e)
+        {
+            if (_estateTable != null)
+            {
+                DataView dv = _estateTable.DefaultView;
+
+                dv.RowFilter = string.Format("[Emlak Adı] LIKE '%{0}%'", txtSearchEstate.Text.Replace("'", "''"));
+
+                estateDataGridView.DataSource = dv;
+            }
+        }
+
+        private void txtSearchEstate_Enter(object sender, EventArgs e)
+        {
+            txtSearchEstate.Clear();
         }
     }
 }

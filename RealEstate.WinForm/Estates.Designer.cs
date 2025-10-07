@@ -36,6 +36,9 @@
             Column5 = new DataGridViewTextBoxColumn();
             kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
+            kryptonPanel9 = new Krypton.Toolkit.KryptonPanel();
+            kryptonPanel8 = new Krypton.Toolkit.KryptonPanel();
+            txtSearchEstate = new Krypton.Toolkit.KryptonTextBox();
             kryptonPanel3 = new Krypton.Toolkit.KryptonPanel();
             btnDeleteEstate = new Krypton.Toolkit.KryptonButton();
             kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
@@ -59,6 +62,10 @@
             kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)kryptonPanel2).BeginInit();
             kryptonPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)kryptonPanel9).BeginInit();
+            kryptonPanel9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)kryptonPanel8).BeginInit();
+            kryptonPanel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)kryptonPanel3).BeginInit();
             kryptonPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)kryptonPanel4).BeginInit();
@@ -86,7 +93,7 @@
             estateDataGridView.Name = "estateDataGridView";
             estateDataGridView.PaletteMode = Krypton.Toolkit.PaletteMode.ProfessionalSystem;
             estateDataGridView.RowHeadersWidth = 51;
-            estateDataGridView.Size = new Size(443, 708);
+            estateDataGridView.Size = new Size(443, 645);
             estateDataGridView.TabIndex = 0;
             estateDataGridView.SelectionChanged += estateDataGridView_SelectionChanged;
             // 
@@ -139,14 +146,45 @@
             // 
             // kryptonPanel2
             // 
+            kryptonPanel2.Controls.Add(kryptonPanel9);
+            kryptonPanel2.Controls.Add(kryptonPanel8);
             kryptonPanel2.Controls.Add(kryptonPanel3);
-            kryptonPanel2.Controls.Add(estateDataGridView);
             kryptonPanel2.Dock = DockStyle.Fill;
             kryptonPanel2.Location = new Point(0, 25);
             kryptonPanel2.Name = "kryptonPanel2";
             kryptonPanel2.PaletteMode = Krypton.Toolkit.PaletteMode.ProfessionalSystem;
             kryptonPanel2.Size = new Size(443, 708);
             kryptonPanel2.TabIndex = 1;
+            // 
+            // kryptonPanel9
+            // 
+            kryptonPanel9.Controls.Add(estateDataGridView);
+            kryptonPanel9.Dock = DockStyle.Fill;
+            kryptonPanel9.Location = new Point(0, 28);
+            kryptonPanel9.Name = "kryptonPanel9";
+            kryptonPanel9.Size = new Size(443, 645);
+            kryptonPanel9.TabIndex = 4;
+            // 
+            // kryptonPanel8
+            // 
+            kryptonPanel8.Controls.Add(txtSearchEstate);
+            kryptonPanel8.Dock = DockStyle.Top;
+            kryptonPanel8.Location = new Point(0, 0);
+            kryptonPanel8.Name = "kryptonPanel8";
+            kryptonPanel8.PaletteMode = Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            kryptonPanel8.Size = new Size(443, 28);
+            kryptonPanel8.TabIndex = 3;
+            // 
+            // txtSearchEstate
+            // 
+            txtSearchEstate.Location = new Point(3, 0);
+            txtSearchEstate.Name = "txtSearchEstate";
+            txtSearchEstate.PaletteMode = Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            txtSearchEstate.Size = new Size(125, 27);
+            txtSearchEstate.TabIndex = 0;
+            txtSearchEstate.Text = "Varlık Ara...";
+            txtSearchEstate.TextChanged += txtSearchEstate_TextChanged;
+            txtSearchEstate.Enter += txtSearchEstate_Enter;
             // 
             // kryptonPanel3
             // 
@@ -349,6 +387,11 @@
             kryptonPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)kryptonPanel2).EndInit();
             kryptonPanel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)kryptonPanel9).EndInit();
+            kryptonPanel9.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)kryptonPanel8).EndInit();
+            kryptonPanel8.ResumeLayout(false);
+            kryptonPanel8.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)kryptonPanel3).EndInit();
             kryptonPanel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)kryptonPanel4).EndInit();
@@ -394,5 +437,8 @@
         private Krypton.Toolkit.KryptonPanel kryptonPanel6;
         private Krypton.Toolkit.KryptonLabel kryptonLabel5;
         private Krypton.Toolkit.KryptonPanel kryptonPanel7;
+        private Krypton.Toolkit.KryptonPanel kryptonPanel9;
+        private Krypton.Toolkit.KryptonPanel kryptonPanel8;
+        private Krypton.Toolkit.KryptonTextBox txtSearchEstate;
     }
 }

@@ -52,17 +52,17 @@ namespace RealEstate.WinForm
         private async void MainPage_Load(object sender, EventArgs e)
         {
             var user = await _appUserRepository.GetExistingUser();
-            lblUsername.Text=user.Username;
-            lblName.Text= user.Name;
+            lblUsername.Text = user.Username;
+            lblName.Text = user.Name;
             lblSurname.Text = user.Surname;
 
 
             #region Estate'ler için Pie Chart
             var estates = await _estateRepository.GetMyEstates(user.AppUserId);
-            
-            var activeEstatesCount=estates.Count(e => e.Status == "İlanda");
-            var rentedEstatesCount=estates.Count(e => e.Status == "Kiralandı");
-            var selledEstatesCount=estates.Count(e => e.Status == "Satıldı");
+
+            var activeEstatesCount = estates.Count(e => e.Status == "İlanda");
+            var rentedEstatesCount = estates.Count(e => e.Status == "Kiralandı");
+            var selledEstatesCount = estates.Count(e => e.Status == "Satıldı");
 
 
             pieCharEstates.Series.Clear();
@@ -74,13 +74,13 @@ namespace RealEstate.WinForm
             series.Points.AddXY("Kiralandı", rentedEstatesCount);
             series.Points.AddXY("Satıldı", selledEstatesCount);
 
-            series.LegendText= "#VALX (#PERCENT{P0})";
+            series.LegendText = "#VALX (#PERCENT{P0})";
             #endregion
 
             #region Müşteriler için Pie Chart
             var customers = await _customerRepository.GetMyCustomers(user.AppUserId);
-            var maleCustomersCount=customers.Count(g=>g.Gender== "Erkek");
-            var femaleCustomerCount=customers.Count(g=>g.Gender== "Kadın");
+            var maleCustomersCount = customers.Count(g => g.Gender == "Erkek");
+            var femaleCustomerCount = customers.Count(g => g.Gender == "Kadın");
 
             pieChartCustomers.Series.Clear();
             pieChartCustomers.Titles.Clear();
@@ -104,6 +104,12 @@ namespace RealEstate.WinForm
 
         }
 
-
+        private void sesliNotlarımToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var voiceNotesForm=new MyVoiceNotes())
+            {
+                voiceNotesForm.ShowDialog();
+            }
+        }
     }
 }
